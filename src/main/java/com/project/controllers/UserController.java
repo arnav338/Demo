@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.SpringVersion;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,7 @@ public class UserController {
 	@RequestMapping("/signupUser")
 	@CrossOrigin
 	public boolean registerUser(@RequestBody User user) throws IOException {
-		logger.info("Received request to signup user {} ", user);
+		logger.info("Received request to signup user {} - {}", user,SpringVersion.getVersion());
 		boolean authenticationFlag = userServiceImpl.signupUser(user);
 		return authenticationFlag ? true : false;
 	}
